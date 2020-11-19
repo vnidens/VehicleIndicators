@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.vnidens.vehicle.data.impl">
+
+    <application>
+        <service
+            android:name="com.vnidens.vehicle.data.service.VehicleDataService"
+            android:process=":data_generator_process"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.vnidens.vehicle.data.service.SPEEDOMETER"/>
+                <action android:name="com.vnidens.vehicle.data.service.TACHOMETER"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
