@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fullScreenActivity()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -35,6 +36,31 @@ class MainActivity : AppCompatActivity() {
 
         binding.pager.adapter = pagerAdapter
         binding.pager.registerOnPageChangeCallback(CircularPageChangeListener(binding.pager))
+    }
+
+    private fun fullScreenActivity() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
+        window.decorView.apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                windowInsetsController?.hide(
+                    WindowInsets.Type.statusBars()
+                            or WindowInsets.Type.navigationBars()
+                            or WindowInsets.Type.displayCutout()
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or SYSTEM_UI_FLAG_FULLSCREEN
+                        or SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+            }
+        }
     }
 
 }
