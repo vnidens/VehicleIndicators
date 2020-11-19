@@ -27,6 +27,15 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return when (ev?.actionMasked) {
+            MotionEvent.ACTION_POINTER_DOWN -> false
+            MotionEvent.ACTION_MOVE -> (ev.pointerCount == 2)
+            else -> true
+        }
+                && super.dispatchTouchEvent(ev)
+    }
+
     private fun initView() {
         val pagerAdapter = CircularFragmentPagerAdapter(
             listOf(SpeedometerFragment::class.java, TachometerFragment::class.java),
