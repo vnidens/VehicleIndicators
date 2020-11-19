@@ -30,6 +30,16 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    lintOptions {
+        isWarningsAsErrors = true
+        lintConfig = file("../config/lint/lint.xml")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -50,8 +60,27 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
 
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    implementation(project(":vehicledata-api"))
+    implementation(project(":vehicledata-impl"))
+    implementation(project(":view-gauge"))
+
+    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation("com.github.tony19:logback-android:2.0.0")
+
+    testImplementation("junit:junit:4.13.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+}
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
+    }
 }
