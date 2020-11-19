@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.vnidens.view.gauge.GaugeIndicatorView
+        android:id="@+id/giv_tachometer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/grey_800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:giv_maxValue="10"
+        app:giv_dangerousValue="6"
+        app:giv_primaryScalesStep="2"
+        app:giv_secondaryScalesStep="1"
+        app:giv_handColor="@color/orange_500"
+        app:giv_font="fonts/BigShouldersStencilText-Regular.ttf"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
