@@ -25,7 +25,6 @@ class SpeedometerServiceProxy(
         SpeedometerDataService.Stub.asInterface(binder)
 
     override fun onConnected() {
-        logger.trace("[onConnected]")
         serviceRef.get()?.setFloatValueListener(floatValueListener)
     }
 }

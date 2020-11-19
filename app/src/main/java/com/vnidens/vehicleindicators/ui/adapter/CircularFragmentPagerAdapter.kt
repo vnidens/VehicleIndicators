@@ -23,8 +23,6 @@ class CircularFragmentPagerAdapter(
     manager: FragmentManager, lifecycle: Lifecycle
 ) : FragmentStateAdapter(manager, lifecycle) {
 
-    private val logger = LoggerFactory.getLogger(this::class.java)
-
     private val items = if(fragmentClasses.size > 1) {
         listOf(fragmentClasses.last(), *fragmentClasses.toTypedArray(), fragmentClasses.first())
     } else {
@@ -34,9 +32,7 @@ class CircularFragmentPagerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun createFragment(position: Int): Fragment {
-        return items[position].newInstance().apply {
-            logger.trace("[createFragment] Object=[$this]")
-        }
+        return items[position].newInstance()
     }
 
 }

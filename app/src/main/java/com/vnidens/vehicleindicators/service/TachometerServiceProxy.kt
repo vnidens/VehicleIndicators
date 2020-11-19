@@ -26,7 +26,6 @@ class TachometerServiceProxy(
         TachometerDataService.Stub.asInterface(binder)
 
     override fun onConnected() {
-        logger.trace("[onConnected]")
         serviceRef.get()?.setFloatValueListener(floatValueListener)
     }
 }

@@ -23,8 +23,6 @@ abstract class AbstractVehicleServiceProxy<T>(
     private val context: Context
 ) : VehicleDataProvider {
 
-    protected val logger = LoggerFactory.getLogger(this::class.java)
-
     private val serviceConnection = ServiceConnectionImpl()
 
     protected abstract val serviceIntent: Intent
@@ -41,24 +39,19 @@ abstract class AbstractVehicleServiceProxy<T>(
     protected abstract fun onConnected()
 
     override fun connect() {
-        logger.trace("[connect]")
         if(serviceRef.get() == null) {
-            logger.trace("[connect] Perform")
             context.bindService(serviceIntent, serviceConnection, Service.BIND_AUTO_CREATE)
         }
     }
 
     override fun disconnect() {
-        logger.trace("[disconnect]")
         if(serviceRef.get() != null) {
-            logger.trace("[disconnect] Perform")
             context.unbindService(serviceConnection)
         }
     }
 
     private inner class ServiceConnectionImpl : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            logger.trace("[onServiceConnected]")
             service?.also {
                 serviceRef.set(getServiceInstance(it))
                 onConnected()
@@ -66,7 +59,6 @@ abstract class AbstractVehicleServiceProxy<T>(
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
-            logger.trace("[onServiceDisconnected]")
             serviceRef.set(null)
         }
 
