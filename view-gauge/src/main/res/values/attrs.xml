@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GaugeIndicatorView">
+        <attr name="giv_maxValue" format="integer"/>
+        <attr name="giv_dangerousValue" format="integer"/>
+        <attr name="giv_currentValue" format="integer|float"/>
+        <attr name="giv_primaryScalesStep" format="integer"/>
+        <attr name="giv_primaryScalesLabelStep" format="integer"/>
+        <attr name="giv_secondaryScalesStep" format="integer"/>
+        <attr name="giv_handColor" format="color"/>
+        <attr name="giv_strokeColor" format="color"/>
+        <attr name="giv_strokeTextPadding" format="dimension"/>
+        <attr name="giv_font" format="string"/>
+    </declare-styleable>
+</resources>
