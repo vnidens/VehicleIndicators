@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             lifecycle
         )
 
+        binding.pager.setPageTransformer(DepthPageTransformer())
         binding.pager.adapter = pagerAdapter
         binding.pager.registerOnPageChangeCallback(CircularPageChangeListener(binding.pager))
     }
