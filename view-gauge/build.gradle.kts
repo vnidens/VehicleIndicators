@@ -49,7 +49,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.3.2")
 
-    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation(slf4j())
 }
 
 tasks {

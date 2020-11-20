@@ -11,11 +11,11 @@ android {
     buildToolsVersion("30.0.2")
 
     defaultConfig {
-        applicationId = "com.vnidens.vehicleindicators"
+        applicationId = ProjectInfo.applicationId
         minSdkVersion(23)
         targetSdkVersion(30)
-        versionName = "1.0"
-        versionCode = 1
+        versionName = ProjectInfo.versionName
+        versionCode = ProjectInfo.versionCode
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -63,7 +63,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${KotlinCompilerVersion.VERSION}")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0")
+    implementation(`kotlinx-coroutines-android`())
 
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -78,7 +78,7 @@ dependencies {
     implementation(project(":vehicledata-impl"))
     implementation(project(":view-gauge"))
 
-    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation(slf4j())
     implementation("com.github.tony19:logback-android:2.0.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")

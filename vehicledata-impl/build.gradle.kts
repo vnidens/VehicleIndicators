@@ -45,11 +45,11 @@ android {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${KotlinCompilerVersion.VERSION}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0")
+    implementation(`kotlinx-coroutines-android`())
 
     api(project(":vehicledata-api"))
 
-    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation(slf4j())
 }
 
 tasks {
