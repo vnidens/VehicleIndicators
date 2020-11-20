@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("de.mannodermaus.android-junit5")
 }
 
 android {
@@ -17,6 +18,8 @@ android {
         versionCode = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
     }
 
     buildTypes {
@@ -33,6 +36,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
     }
 
     lintOptions {
@@ -72,8 +81,20 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.30")
     implementation("com.github.tony19:logback-android:2.0.0")
 
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+
     testImplementation("junit:junit:4.13.1")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.0")
+
+    testImplementation("io.mockk:mockk:1.10.0")
+
+    androidTestImplementation("androidx.test:core:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.0")
+    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
 

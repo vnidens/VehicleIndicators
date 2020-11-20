@@ -20,7 +20,8 @@ import kotlin.reflect.KClass
  */
 class CircularFragmentPagerAdapter(
     fragmentClasses: List<Class<out Fragment>>,
-    manager: FragmentManager, lifecycle: Lifecycle
+    manager: FragmentManager,
+    lifecycle: Lifecycle
 ) : FragmentStateAdapter(manager, lifecycle) {
 
     private val items = if(fragmentClasses.size > 1) {
